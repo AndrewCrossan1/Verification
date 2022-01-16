@@ -118,6 +118,44 @@ namespace Verification
                 return sb.ToString();  
             }
         }
+        /// <summary>
+        /// <para>Used to compare hashed password with password entry</para>
+        /// <para>Useful for password login verification and verifying encrypted keys</para>
+        /// </summary>
+        /// <param name="Password"></param>
+        /// <param name="Hash"></param>
+        public static bool CompareHash(string Password, string Hash) 
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                //Convert entered value to bytes
+                #pragma warning disable CS8604 // Possible null reference argument.
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(Password));
+                #pragma warning restore CS8604 // Possible null reference argument.
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    sb.Append(bytes[i].ToString("x2"));
+                }
+                //If password or hash parameters are null return false
+                if (Password == null || Hash == null)
+                {
+                    return false;
+                }
+                else 
+                { 
+                    if (sb.ToString() == Hash)
+                    {
+                        return true;
+                    }
+                    else 
+                    {
+                        return false;
+                    }
+                }
+            }   
+        }
         #endregion
     }
 }
