@@ -23,7 +23,7 @@ namespace Verification
         /// </summary>
         private static string? errormessage;
         //Public property for ErrorMessage attribute
-        public static readonly string? ErrorMessage;
+        public static string? ErrorMessage => errormessage;
         #endregion
 
         //Constructor Method
@@ -71,7 +71,7 @@ namespace Verification
             }
             else if (!IsCorrectLength.IsMatch(this.value))
             {
-                errormessage = "Password must be between 7 and 12 characters";
+                errormessage = "Password must be between 7 and 21 characters";
                 return false;
             }
             else if (!HasLowerChar.IsMatch(this.value))
