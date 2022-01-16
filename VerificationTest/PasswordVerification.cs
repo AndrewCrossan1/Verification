@@ -105,5 +105,39 @@ namespace VerificationTest
                 Console.WriteLine(p.CreatePasswordHash());
             }
         }
+
+        //Creating a hash using the method and verifying it using CompareHash()
+        public string HashPass(string pass) 
+        {
+            Password p = new Password(pass);
+            return p.CreatePasswordHash();
+        }
+
+        [Description("Comparing two correct hashes"), TestCategory("Password Comparison Test"), TestMethod]
+        public void CompareCorrectHashes() 
+        { 
+            string Hash = HashPass("ChickenDipper2434!");
+            if (Password.CompareHash("ChickenDipper2434!", Hash)) 
+            {
+                Console.WriteLine("Passwords Match");
+            } 
+            else 
+            {
+                Console.WriteLine("Passwords do not match");
+            }
+        }
+        [Description("Comparing two incorrect hashes"), TestCategory("Password Comparison Test"), TestMethod]
+        public void CompareIncorrectHashes()
+        {
+            string Hash = HashPass("SevenNugget3456!");
+            if (Password.CompareHash("ChickenDipper2434!", Hash))
+            {
+                Console.WriteLine("Passwords Match");
+            }
+            else
+            {
+                Console.WriteLine("Passwords do not match");
+            }
+        }
     }
 }
