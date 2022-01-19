@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Verification", "Verification\Verification.csproj", "{BF6A7F92-51C3-460C-9F3D-3798D45FD99C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerificationTest", "VerificationTest\VerificationTest.csproj", "{38686A43-291D-4927-9D84-FE3DA199175A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerificationTest", "VerificationTest\VerificationTest.csproj", "{38686A43-291D-4927-9D84-FE3DA199175A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

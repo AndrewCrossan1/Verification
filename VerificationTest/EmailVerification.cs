@@ -9,7 +9,7 @@ namespace VerificationTest
     public class EmailVerification
     {
         [Description("A syntactically valid, domain valid email"), TestCategory("Email Testing"), TestMethod]
-        public async Task ValidEmail() 
+        public async Task ValidEmail()
         {
             Email email = new Email("Andrew.crossan23@outlook.com");
             bool valid = await email.VerifyAsync();
@@ -51,6 +51,19 @@ namespace VerificationTest
             {
                 Console.WriteLine("Invalid email");
                 Assert.AreEqual(valid, false);
+            }
+        }
+        [Description("Validate whether email is sent or not (Check email)"), TestCategory("Email Testing"), TestMethod]
+        public async Task SendEmail()
+        {
+            bool result = await Email.SendConfirmationAsync("", "", "");
+            if (result)
+            {
+                Assert.AreEqual(result, true);
+            }
+            else
+            {
+                Console.WriteLine(Email.ErrorMessage);
             }
         }
     }

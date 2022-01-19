@@ -79,7 +79,7 @@ namespace VerificationTest
         }
         [Description("No Capital letter"), TestCategory("Password Testing"), TestMethod]
         //Normal data for an invalid password (No capital letter) - expected error message as return
-        public void NoCapitalLetter() 
+        public void NoCapitalLetter()
         {
             Password p = new Password("foursi2!");
             if (p.CreatePasswordHash() == null)
@@ -107,21 +107,21 @@ namespace VerificationTest
         }
 
         //Creating a hash using the method and verifying it using CompareHash()
-        public string HashPass(string pass) 
+        public string HashPass(string pass)
         {
             Password p = new Password(pass);
             return p.CreatePasswordHash();
         }
 
         [Description("Comparing two correct hashes"), TestCategory("Password Comparison Test"), TestMethod]
-        public void CompareCorrectHashes() 
-        { 
+        public void CompareCorrectHashes()
+        {
             string Hash = HashPass("ChickenDipper2434!");
-            if (Password.CompareHash("ChickenDipper2434!", Hash)) 
+            if (Password.CompareHash("ChickenDipper2434!", Hash))
             {
                 Console.WriteLine("Passwords Match");
-            } 
-            else 
+            }
+            else
             {
                 Console.WriteLine("Passwords do not match");
             }
