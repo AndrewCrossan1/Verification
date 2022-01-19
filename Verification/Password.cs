@@ -1,8 +1,5 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
-using System.Threading;
 using System.Text.RegularExpressions;
 
 namespace Verification
@@ -40,10 +37,10 @@ namespace Verification
         /// <summary>
         /// <para>Used to verify that password meets suitable criteria</para>
         /// </summary>
-        private bool Verify() 
+        private bool Verify()
         {
             //Check if password is set
-            if (string.IsNullOrWhiteSpace(this.value)) 
+            if (string.IsNullOrWhiteSpace(this.value))
             {
                 errormessage = "Password should not be null or contain whitespace";
                 return false;
@@ -84,7 +81,7 @@ namespace Verification
                 errormessage = "Password must contain at least one special character";
                 return false;
             }
-            else 
+            else
             {
                 return true;
             }
@@ -96,9 +93,9 @@ namespace Verification
         /// </summary>
         /// <param name="Password"></param>
         /// <param name="Hash"></param>
-        public string? CreatePasswordHash() 
+        public string? CreatePasswordHash()
         {
-            if (!Verify()) 
+            if (!Verify())
             {
                 return null;
             }
@@ -106,16 +103,16 @@ namespace Verification
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 //Convert entered value to bytes
-                #pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8604 // Possible null reference argument.
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(value));
-                #pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8604 // Possible null reference argument.
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
                     sb.Append(bytes[i].ToString("x2"));
                 }
-                return sb.ToString();  
+                return sb.ToString();
             }
         }
         /// <summary>
@@ -124,14 +121,14 @@ namespace Verification
         /// </summary>
         /// <param name="Password"></param>
         /// <param name="Hash"></param>
-        public static bool CompareHash(string Password, string Hash) 
+        public static bool CompareHash(string Password, string Hash)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 //Convert entered value to bytes
-                #pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8604 // Possible null reference argument.
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(Password));
-                #pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8604 // Possible null reference argument.
 
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
@@ -143,18 +140,18 @@ namespace Verification
                 {
                     return false;
                 }
-                else 
-                { 
+                else
+                {
                     if (sb.ToString() == Hash)
                     {
                         return true;
                     }
-                    else 
+                    else
                     {
                         return false;
                     }
                 }
-            }   
+            }
         }
         #endregion
     }

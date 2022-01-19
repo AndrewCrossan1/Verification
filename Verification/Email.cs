@@ -1,6 +1,7 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
+using System.Net.Mail;
 using System.Net.Sockets;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Verification
@@ -34,13 +35,15 @@ namespace Verification
         /// Check if email is syntactically valid (Certain minimum length, and contains correct characters.
         /// </summary>
         /// <returns>True or False</returns>
-        private bool IsSyntacticallyValid() 
+        private bool IsSyntacticallyValid()
         {
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                   @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
             Regex re = new Regex(strRegex);
+#pragma warning disable CS8604 // Dereference of a possibly null reference.
             if (re.IsMatch(this.value))
+#pragma warning restore CS8604 // Dereference of a possibly null reference
             {
                 return true;
             }
@@ -70,8 +73,10 @@ namespace Verification
                 await s.ConnectAsync(endPt);
                 return true;
             }
-            catch (Exception ex) 
+#pragma warning disable 
+            catch (Exception ex)
             {
+#pragma warning restore
                 errormessage = "Please use a valid email provider";
                 return false;
             }
@@ -96,7 +101,7 @@ namespace Verification
                 s.Connect(endPt);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 errormessage = "Please use a valid email provider";
                 return false;
@@ -106,15 +111,17 @@ namespace Verification
         /// Verify email domain and email syntax are both correct and alert user
         /// </summary>
         /// <returns>synchronous task that returns true or false</returns>
-        public bool Verify() 
+        public bool Verify()
         {
-            if (!IsSyntacticallyValid()) 
+            if (!IsSyntacticallyValid())
             {
                 return false;
-            } else if (!IsDomainValid())
+            }
+            else if (!IsDomainValid())
             {
                 return false;
-            } else 
+            }
+            else
             {
                 return true;
             }
@@ -133,12 +140,49 @@ namespace Verification
             else if (!domainvalid)
             {
                 return false;
-            } 
+            }
             else
             {
                 return true;
             }
         }
         #endregion
+        /// <summary>
+        /// Send html message to user email to verify account using randomly generated phrase
+        /// </summary>
+        /// <returns>True or false</returns>
+        public static async Task<bool> SendConfirmationAsync(string Sender, string SenderPassword, string Recepient)
+        {
+            try
+            {
+                string vcode = new Random().Next(100000, 999999).ToString();
+                //Setting SmtpClient variables.
+                SmtpClient client = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(Sender, SenderPassword),
+                    EnableSsl = true
+                };
+                //Set up email message
+                MailMessage message = new MailMessage();
+                message.To.Add(Recepient);
+                message.From = new MailAddress(Sender);
+                message.Subject = "Email verification";
+                message.IsBodyHtml = true;
+                StringBuilder stringbuilder = new StringBuilder();
+                string line = await File.ReadAllTextAsync(@"Resources/emailtemplate.html");
+                line = line.Replace("{ vcode }", vcode.ToString());
+                message.Body = $"{line}";
+                await client.SendMailAsync(message);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                errormessage = ex.Message;
+                return false;
+            }
+        }
     }
 }
