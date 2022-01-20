@@ -3,6 +3,9 @@ using System.Net.Mail;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Reflection;
+using System.Resources;
+using System.Globalization;
 
 namespace Verification
 {
@@ -172,15 +175,50 @@ namespace Verification
                 message.Subject = "Email verification";
                 message.IsBodyHtml = true;
                 StringBuilder stringbuilder = new StringBuilder();
-                string line = await File.ReadAllTextAsync(@"Resources/emailtemplate.html");
+                ResourceManager rm = new ResourceManager("UsingRESX.Resource1", Assembly.GetExecutingAssembly());
+                string strwebsite = Resource1.emailtemplate.ToString();
+                string line = strwebsite;
                 line = line.Replace("{ vcode }", vcode.ToString());
                 message.Body = $"{line}";
                 await client.SendMailAsync(message);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                errormessage = ex.Message;
+                errormessage = "Email not sent, internal error occurred";
+                return false;
+            }
+        }
+        public static bool SendConfirmation(string Sender, string SenderPassword, string Recepient)
+        {
+            try
+            {
+                string vcode = new Random().Next(100000, 999999).ToString();
+                //Setting SmtpClient variables.
+                SmtpClient client = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(Sender, SenderPassword),
+                    EnableSsl = true
+                };
+                //Set up email message
+                MailMessage message = new MailMessage();
+                message.To.Add(Recepient);
+                message.From = new MailAddress(Sender);
+                message.Subject = "Email verification";
+                message.IsBodyHtml = true;
+                StringBuilder stringbuilder = new StringBuilder();
+                string line = File.ReadAllText(@"Resources/emailtemplate.html");
+                line = line.Replace("{ vcode }", vcode.ToString());
+                message.Body = $"{line}";
+                client.Send(message);
+                return true;
+            }
+            catch (Exception)
+            {
+                errormessage = "Email not sent, internal error occurred";
                 return false;
             }
         }
