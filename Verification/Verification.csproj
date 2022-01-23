@@ -7,6 +7,10 @@
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.1</Version>
+    <Authors>Andrew Crossan</Authors>
+    <Description>A library of functions for verifying the integrity and validity of different
+commonly used account variables, like passwords, usernames and emails.</Description>
+    <PackageTags>Verification, Verify, Tool</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
