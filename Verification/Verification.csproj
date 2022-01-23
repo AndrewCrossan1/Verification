@@ -6,21 +6,32 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>Andrew Crossan</Authors>
     <Description>A library of functions for verifying the integrity and validity of different
 commonly used account variables, like passwords, usernames and emails.</Description>
     <PackageTags>Verification, Verify, Tool</PackageTags>
     <SignAssembly>False</SignAssembly>
-    <Product>$(AssemblyName)</Product>
-    <Company>$(Authors)</Company>
-    <PackageIcon>vimeo-video-social-media-letter-v_icon-icons.com_59175.png</PackageIcon>
+    <Product>Verifee</Product>
+    <Company>Verifee</Company>
+    <PackageIcon>verifyshieldwithcheckmark_81057.png</PackageIcon>
     <RepositoryUrl>https://github.com/AndrewCrossan1/Verification</RepositoryUrl>
-    <PackageReleaseNotes>Date of birth Verification now added.</PackageReleaseNotes>
+    <PackageReleaseNotes>Icon files updated</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en-001</NeutralLanguage>
-    <ApplicationIcon>vimeo-video-social-media-letter-v_icon-icons.com_59175.ico</ApplicationIcon>
+    <ApplicationIcon>verifyshieldwithcheckmark_81057.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="verifyshieldwithcheckmark_81057.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\verifyshieldwithcheckmark_81057.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Resource1.Designer.cs">
