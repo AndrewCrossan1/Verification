@@ -18,7 +18,10 @@
         //Public property for ErrorMessage attribute
         public static string? ErrorMessage => errormessage;
         #endregion
-
+        /// <summary>
+        /// Initialises a new instance of the DateOfBirth class
+        /// </summary>
+        /// <param name="date"></param>
         public DateOfBirth(DateTime date)
         {
             value = date;
@@ -33,7 +36,7 @@
         {
             try
             {
-                if (DateOnly.FromDateTime(this.value) > DateOnly.FromDateTime(DateTime.Today))
+                if (DateOnly.FromDateTime(value) > DateOnly.FromDateTime(DateTime.Today))
                 {
                     errormessage = "Date must be not in the future!";
                     return false;
@@ -65,20 +68,32 @@
             {
                 return true; 
             }
-            else
+            else //If equal to
             { 
-                if (value.DayOfYear < DateTime.Today.DayOfYear) 
+                if (value.Month < DateTime.Today.Month) 
                 {
                     errormessage = "User is not old enough.";
                     return false;
                 } 
-                else if (value.DayOfYear > DateTime.Today.DayOfYear) 
-                {
-                    return false;
-                }
-                else 
+                else if (value.Month > DateTime.Today.Month) 
                 {
                     return true;
+                }
+                else //If equal to
+                {
+                    if (value.Day > DateTime.Today.Day) 
+                    {
+                        errormessage = $"{value.Day - DateTime.Today.Day}";
+                        return false;
+                    } 
+                    else if (value.Day > DateTime.Today.Day) 
+                    {
+                        return true;
+                    }
+                    else 
+                    {
+                        return true;
+                    }
                 }
             }
         }

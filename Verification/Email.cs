@@ -16,9 +16,9 @@ namespace Verification
     {
         #region Variable Declaration
         //Public property for value attribute
-        public string? Value { get { return value; } set { this.value = value; } }
+        public string Value { get { return value; } set { this.value = value; } }
         //Private attribute for value
-        private string? value = default;
+        private string value = default;
         //Private Variable for ErrorMessage
         /// <summary>
         /// Saves error message if present
@@ -27,7 +27,10 @@ namespace Verification
         //Public property for ErrorMessage attribute
         public static string? ErrorMessage => errormessage;
         #endregion
-
+        /// <summary>
+        /// Intialises a new instance of the email class
+        /// </summary>
+        /// <param name="Email"></param>
         public Email(string Email)
         {
             this.value = Email;

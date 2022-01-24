@@ -23,10 +23,6 @@ commonly used account variables, like passwords, usernames and emails.</Descript
     <Copyright>MIT License</Copyright>
     <PackageProjectUrl>https//andrewcrossan1.github.io/</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	<Title>Verification by Verifee</Title>
-	  <Summary>Used to verify commonly used account attributes</Summary>
-	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

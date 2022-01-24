@@ -11,9 +11,9 @@ namespace Verification
     {
         #region Variable Declaration
         //Public property for value attribute
-        public string? Value { get { return value; } set { this.value = value; } }
+        public string Value { get { return value; } set { this.value = value; } }
         //Private attribute for value
-        private string? value = default;
+        private string value = default;
         //Private Variable for ErrorMessage
         /// <summary>
         /// Saves error message if present
@@ -22,7 +22,6 @@ namespace Verification
         //Public property for ErrorMessage attribute
         public static string? ErrorMessage => errormessage;
         #endregion
-
         //Constructor Method
         /// <summary>
         /// <para>Initialises an object of the Password class</para>
