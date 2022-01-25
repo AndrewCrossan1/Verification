@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.4</Version>
+    <Version>1.2.0</Version>
     <Authors>Andrew Crossan</Authors>
     <Description>A library of functions for verifying the integrity and validity of different
 commonly used account variables, like passwords, usernames and emails.</Description>
@@ -16,7 +16,7 @@ commonly used account variables, like passwords, usernames and emails.</Descript
     <Company>Verifee</Company>
     <PackageIcon>verifyshieldwithcheckmark_81057.png</PackageIcon>
     <RepositoryUrl>https://github.com/AndrewCrossan1/Verification</RepositoryUrl>
-    <PackageReleaseNotes>Date of Birth Verification fixed</PackageReleaseNotes>
+    <PackageReleaseNotes>Email confirmation code now sent and able to be verified by user.</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en-001</NeutralLanguage>
     <Copyright>MIT License</Copyright>
