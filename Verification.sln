@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Verification", "Verificatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerificationTest", "VerificationTest\VerificationTest.csproj", "{38686A43-291D-4927-9D84-FE3DA199175A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{762E6012-238E-4F10-8B4C-E62CB4D7A60A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{38686A43-291D-4927-9D84-FE3DA199175A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38686A43-291D-4927-9D84-FE3DA199175A}.Release|x64.ActiveCfg = Release|Any CPU
 		{38686A43-291D-4927-9D84-FE3DA199175A}.Release|x64.Build.0 = Release|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Debug|x64.Build.0 = Debug|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Release|x64.ActiveCfg = Release|Any CPU
+		{762E6012-238E-4F10-8B4C-E62CB4D7A60A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

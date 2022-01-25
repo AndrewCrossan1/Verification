@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.2</Version>
+    <Version>1.1.4</Version>
     <Authors>Andrew Crossan</Authors>
     <Description>A library of functions for verifying the integrity and validity of different
 commonly used account variables, like passwords, usernames and emails.</Description>
@@ -16,10 +16,9 @@ commonly used account variables, like passwords, usernames and emails.</Descript
     <Company>Verifee</Company>
     <PackageIcon>verifyshieldwithcheckmark_81057.png</PackageIcon>
     <RepositoryUrl>https://github.com/AndrewCrossan1/Verification</RepositoryUrl>
-    <PackageReleaseNotes>Project Properties upgraded</PackageReleaseNotes>
+    <PackageReleaseNotes>Date of Birth Verification fixed</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en-001</NeutralLanguage>
-    <ApplicationIcon>verifyshieldwithcheckmark_81057.ico</ApplicationIcon>
     <Copyright>MIT License</Copyright>
     <PackageProjectUrl>https//andrewcrossan1.github.io/</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -27,6 +26,7 @@ commonly used account variables, like passwords, usernames and emails.</Descript
 	<Title>Verification by Verifee</Title>
 	  <Summary>Used to verify commonly used account attributes</Summary>
 	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	  <ApplicationIcon>verifyshieldwithcheckmark_81057.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

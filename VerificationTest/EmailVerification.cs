@@ -66,5 +66,13 @@ namespace VerificationTest
                 Console.WriteLine(Email.ErrorMessage);
             }
         }
+        [Description("Confirmation code valid"), TestCategory("Email Testing"), TestMethod]
+        public async Task ValidCode() 
+        {
+            bool sent = await Email.SendConfirmationAsync("andrew.crossan23@gmail.com", "Bruichladdich23!", "andrew.crossan23@outlook.com");
+            Console.WriteLine(Email.ErrorMessage);
+            Assert.AreEqual(sent, true);
+        }
+
     }
 }

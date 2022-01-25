@@ -35,6 +35,9 @@ namespace Verification
         {
             this.value = Email;
         }
+        private Email() 
+        {
+        }
 
         #region Method Declaration
         /// <summary>
@@ -152,7 +155,26 @@ namespace Verification
                 return true;
             }
         }
-        #endregion
+        ///<summary>
+        ///Method for gathering user confirmation code from email (MADE FOR CONSOLE APP, OVERRIDE IF NEEDED)
+        ///</summary>
+        ///<returns>
+        ///Integer entered by user
+        /// </returns>
+        public virtual int PromptEntry() 
+        {
+            try
+            {
+                Console.WriteLine("Please enter the confirmation code sent to your email");
+                int entry = Convert.ToInt32(Console.ReadLine());
+                return entry;
+            } 
+            catch (Exception) 
+            {
+                errormessage = "Invalid entry format.";
+                return -1;
+            }
+        }
         /// <summary>
         /// Send html message to user email to verify account using randomly generated phrase
         /// </summary>
@@ -161,7 +183,8 @@ namespace Verification
         {
             try
             {
-                string vcode = new Random().Next(100000, 999999).ToString();
+                Email e = new Email();
+                int vcode = new Random().Next(100000, 999999);
                 //Setting SmtpClient variables.
                 SmtpClient client = new SmtpClient
                 {
@@ -177,18 +200,30 @@ namespace Verification
                 message.From = new MailAddress(Sender);
                 message.Subject = "Email verification";
                 message.IsBodyHtml = true;
-                StringBuilder stringbuilder = new StringBuilder();
-                ResourceManager rm = new ResourceManager("UsingRESX.Resource1", Assembly.GetExecutingAssembly());
                 string strwebsite = Resource1.emailtemplate.ToString();
                 string line = strwebsite;
                 line = line.Replace("{ vcode }", vcode.ToString());
                 message.Body = $"{line}";
                 await client.SendMailAsync(message);
-                return true;
+                int entry = e.PromptEntry();
+                if (entry == vcode) 
+                {
+                    return true;
+                } 
+                else if (entry == -1)
+                {
+                    errormessage = "Confirmation code entered in incorrect format.";
+                    return false;
+                }
+                else 
+                {
+                    errormessage = "Codes do not match, have you entered it correctly?";
+                    return false;
+                }
             }
             catch (Exception)
             {
-                errormessage = "Email not sent, internal error occurred";
+                errormessage = "Email not sent, internal error occurred.";
                 return false;
             }
         }
@@ -196,7 +231,8 @@ namespace Verification
         {
             try
             {
-                string vcode = new Random().Next(100000, 999999).ToString();
+                Email e = new Email();
+                int vcode = new Random().Next(100000, 999999);
                 //Setting SmtpClient variables.
                 SmtpClient client = new SmtpClient
                 {
@@ -210,20 +246,37 @@ namespace Verification
                 MailMessage message = new MailMessage();
                 message.To.Add(Recepient);
                 message.From = new MailAddress(Sender);
-                message.Subject = "Email verification";
+                message.Subject = "Verify your account";
                 message.IsBodyHtml = true;
                 StringBuilder stringbuilder = new StringBuilder();
-                string line = File.ReadAllText(@"Resources/emailtemplate.html");
+                string line = Resource1.emailtemplate.ToString();
                 line = line.Replace("{ vcode }", vcode.ToString());
                 message.Body = $"{line}";
                 client.Send(message);
-                return true;
+                errormessage = "hello";
+                int entry = e.PromptEntry();
+                if (entry == vcode)
+                {
+                    return true;
+                }
+                else if (entry == -1)
+                {
+                    errormessage = "Confirmation code entered in incorrect format.";
+                    return false;
+                }
+                else
+                {
+                    errormessage = "Codes do not match, have you entered it correctly?";
+                    return false;
+                }
             }
             catch (Exception)
             {
-                errormessage = "Email not sent, internal error occurred";
+                errormessage = "Email not sent, internal error occurred.";
                 return false;
             }
         }
     }
+    #endregion
 }
+
