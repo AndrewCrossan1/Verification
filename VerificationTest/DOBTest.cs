@@ -11,10 +11,9 @@ namespace VerificationTest
         {
             DateOfBirth dob = new DateOfBirth(Convert.ToDateTime("23-01-2004"));
             bool result1 = dob.IsUserOldEnough();
-            Console.WriteLine(DateOfBirth.ErrorMessage);
             Assert.AreEqual(true, result1);
         }
-        [Description("Testing an under 18 year olds DOB"), TestCategory("Date of Birth Testing"), TestMethod()]
+        //[Description("Testing an under 18 year olds DOB"), TestCategory("Date of Birth Testing"), TestMethod()]
         public void Under18()
         {
             DateOfBirth dob = new DateOfBirth(Convert.ToDateTime("19-10-2005"));
@@ -31,7 +30,7 @@ namespace VerificationTest
                 Assert.AreEqual(true, result2);
             }
         }
-        [Description("Testing an under 18 year olds DOB"), TestCategory("Date of Birth Testing"), TestMethod()]
+//[Description("Testing an under 18 year olds DOB"), TestCategory("Date of Birth Testing"), TestMethod()]
         public void InFuture()
         {
             DateOfBirth dob = new DateOfBirth(Convert.ToDateTime("19-10-2025"));

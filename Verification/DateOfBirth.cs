@@ -73,6 +73,7 @@
                 if (value.Month < DateTime.Today.Month) 
                 {
                     errormessage = "User is not old enough.";
+                ;
                     return false;
                 } 
                 else if (value.Month > DateTime.Today.Month) 
@@ -83,10 +84,10 @@
                 {
                     if (value.Day > DateTime.Today.Day) 
                     {
-                        errormessage = $"{value.Day - DateTime.Today.Day}";
+                        errormessage = "User is not old enough.";
                         return false;
                     } 
-                    else if (value.Day > DateTime.Today.Day) 
+                    else if (value.Day < DateTime.Today.Day) 
                     {
                         return true;
                     }
