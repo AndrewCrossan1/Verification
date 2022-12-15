@@ -1,21 +1,21 @@
-# **Verification by Verifee**
+# **Verification by Andrew**
 
 ## Table of contents
-1. [About Verifee](#About-Verifee)
+1. [About Me](#About-Andrew)
 2. [How to use our Product](#How-to-use-verifee)
 3. [Release Versions](#releases)
 5. [Supporting the creator](#Support-the-creator)
 ***
-<a name="About-Verifee"></a>
-### About Verifee
+<a name="About-Andrew"></a>
+### About Me
 I created this project after struggling to understand a lot of terms used in Regular Expressions which really halted my ability to
 progress with more advanced verification for common attributes used in user accounts like; Usernames, Passwords, Emails, Date of
-Births and eventually a lot more. Verifee includes a lot of different techniques to validate specific attributes, giving them 
+Births and eventually a lot more. Verification includes a lot of different techniques to validate specific attributes, giving them 
 their own unique security and ensuring that Enterprise (Hopefully:smile:) applications are reliable.
 ***
 <a name="How-to-use-verifee"></a>
-### How to use Verifee
-Adding Verifee to your product is extremely simple
+### How to use Verification
+Adding Verification to your product is extremely simple
 #### 1. Adding to your project using NuGet Package Manager
 
 ![NuGet Package Manager](/images/screenshot1.png)
@@ -36,7 +36,7 @@ respective method for the attribute you wish to specify :smile:
 ***
 <a name="Support-the-creator"></a>
 ### About the creator
-Hello 👋 My name is Andrew, I currently study HND Computing: Software Development in Glasgow Clyde College and enjoy making things easier for myself and hopefully for others - hence this project 😆. I am 18 years old and I am open to any feedback and advice users may have to make my project even better, don't worry - I handle critiscm well and enjoy improving so be harsh!<br>
+Hello 👋 My name is Andrew, I currently study Software Engineering at University of Strathclyde and enjoy making things easier for myself and hopefully for others - hence this project 😆. I am 18 years old and I am open to any feedback and advice users may have to make my project even better, don't worry - I handle critiscm well and enjoy improving so be harsh!<br>
 Contact me:<br>
 Discord: AndrewCrossan#5280 [Discord Logo](/images/discord.png)<br>
 Twitter: https://twitter.com/Andrewcrossan11 [Twitter Logo](/images/twitter.png)
